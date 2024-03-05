@@ -1,9 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Utils;
 
 /**
  * Class Math
+ *
  * @package App\Utils
  */
 class Math
