@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -13,7 +12,6 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\TournamentsTable&\Cake\ORM\Association\BelongsTo $Tournaments
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
- *
  * @method \App\Model\Entity\TournamentMembership newEmptyEntity()
  * @method \App\Model\Entity\TournamentMembership newEntity(array $data, array $options = [])
  * @method array<\App\Model\Entity\TournamentMembership> newEntities(array $data, array $options = [])
@@ -27,7 +25,6 @@ use Cake\Validation\Validator;
  * @method iterable<\App\Model\Entity\TournamentMembership>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\TournamentMembership> saveManyOrFail(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\TournamentMembership>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\TournamentMembership>|false deleteMany(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\TournamentMembership>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\TournamentMembership> deleteManyOrFail(iterable $entities, array $options = [])
- *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class TournamentMembershipsTable extends Table

@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -13,7 +12,6 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\GamesTable&\Cake\ORM\Association\BelongsTo $Games
- *
  * @method \App\Model\Entity\Move newEmptyEntity()
  * @method \App\Model\Entity\Move newEntity(array $data, array $options = [])
  * @method array<\App\Model\Entity\Move> newEntities(array $data, array $options = [])
@@ -27,7 +25,6 @@ use Cake\Validation\Validator;
  * @method iterable<\App\Model\Entity\Move>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\Move> saveManyOrFail(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\Move>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\Move>|false deleteMany(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\Move>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\Move> deleteManyOrFail(iterable $entities, array $options = [])
- *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class MovesTable extends Table
