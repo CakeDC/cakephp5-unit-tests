@@ -131,7 +131,7 @@ class GamesTable extends Table
 
     protected function _isPlayerWinner(Game $game)
     {
-        list($playerWins, $computerWins) = $this->_countWins($game);
+        [$playerWins, $computerWins] = $this->_countWins($game);
         if ($game['best_of'] === 1) {
             return $playerWins === 1;
         } else {
@@ -151,10 +151,10 @@ class GamesTable extends Table
             ->countBy(function (Move $move) {
                 if ($move['is_player_winner'] === true) {
                     return 'player';
-                };
+                }
                 if ($move['is_player_winner'] === false) {
                     return 'computer';
-                };
+                }
             })->toArray();
         if (empty($wins)) {
             //only ties

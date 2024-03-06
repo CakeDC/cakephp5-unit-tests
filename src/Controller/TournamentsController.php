@@ -96,7 +96,6 @@ class TournamentsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-
     public function join($tournamentId)
     {
         $this->request->allowMethod(['post', 'put']);

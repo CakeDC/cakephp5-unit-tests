@@ -103,7 +103,6 @@ class GamesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-
     public function play()
     {
         $currentGame = $this->Games->current($this->Auth->user('id'));

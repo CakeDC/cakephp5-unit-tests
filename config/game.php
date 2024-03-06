@@ -7,5 +7,5 @@ return [
         'Lizard' => 'L',
         'Spock' => 'K',
     ],
-    'ComputerMoveBehavior.StrategyClass' => \App\Strategy\RandomStrategy::class
+    'ComputerMoveBehavior.StrategyClass' => \App\Strategy\RandomStrategy::class,
 ];

@@ -6,7 +6,6 @@ namespace App\Model\Behavior;
 use App\Model\Entity\Move;
 use Cake\Event\EventInterface;
 use Cake\ORM\Behavior;
-use Cake\ORM\Table;
 
 /**
  * ComputerMove behavior
@@ -19,7 +18,6 @@ class ComputerMoveBehavior extends Behavior
      * @var array<string, mixed>
      */
     protected array $_defaultConfig = [];
-
 
     public function beforeSave(EventInterface $event, Move $move, \ArrayObject $options)
     {

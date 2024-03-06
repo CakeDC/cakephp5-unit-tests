@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Middleware;
 
-use App\Middleware\ProfileTimeMiddleware;
 use Cake\TestSuite\TestCase;
 
 /**
