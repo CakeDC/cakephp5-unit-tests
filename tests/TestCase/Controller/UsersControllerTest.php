@@ -72,7 +72,8 @@ class UsersControllerTest extends TestCase
         $this->post('/users/add', $data);
         $this->assertResponseSuccess();
         $this->assertNoRedirect();
-        $this->assertSame('The user could not be saved. Please, try again.',
+        $this->assertSame(
+            'The user could not be saved. Please, try again.',
             Hash::get($this->_flashMessages, 'flash.0.message')
         );
         $query = $usersTable->findByEmail($email);
