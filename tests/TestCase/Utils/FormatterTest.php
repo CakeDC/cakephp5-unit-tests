@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Test\TestCase\Utils;
 
@@ -24,14 +25,14 @@ class FormatterTest extends TestCase
     public function testFormatStatPercentage(): void
     {
         $expected = '50%';
-        $result = $this->formatter->formatStatPercentage(1,1);
+        $result = $this->formatter->formatStatPercentage(1, 1);
         $this->assertSame($expected, $result);
     }
 
     public function testFormatStatPercentageShouldReturnPlayMoreGames(): void
     {
         $expected = 'Play more games!';
-        $result = $this->formatter->formatStatPercentage(0,1);
+        $result = $this->formatter->formatStatPercentage(0, 1);
         $this->assertSame($expected, $result);
     }
 }
