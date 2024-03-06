@@ -18,23 +18,11 @@ class Formatter
         if ($won < 0 || $lost < 0) {
             throw new \OutOfBoundsException('Won and lost must not be < 0');
         }
-        $percentage = $this->roundedPercentage($won, $lost);
+        $percentage = Math::roundedPercentage($won, $lost);
         if ($percentage === 0) {
             return __('Play more games!');
         }
 
         return $percentage . '%';
-    }
-
-    /**
-     * Wrap dependency
-     *
-     * @param $won
-     * @param $lost
-     * @return int
-     */
-    protected function roundedPercentage($won, $lost): int
-    {
-        return Math::roundedPercentage($won, $lost);
     }
 }

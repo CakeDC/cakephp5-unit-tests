@@ -78,4 +78,37 @@ class TournamentsTable extends Table
 
         return $validator;
     }
+
+    public function findIndex(Query $query, $options): Query
+    {
+        $userId = $options['userId'] ?? null;
+        if (!$userId) {
+            throw new \OutOfBoundsException('Missing userId');
+        }
+
+        return $query
+            ->contain(['TournamentMemberships' => function (Query $q) use ($userId) {
+                return $q
+                    ->where(['user_id' => $userId]);
+            }]);
+    }
+
+    public function findStats(Query $query, $options): Query
+    {
+        $slug = $options['slug'] ?? null;
+        if (!$slug) {
+            throw new \OutOfBoundsException('Missing slug');
+        }
+
+        return $query
+            ->select([
+                'Tournaments.name',
+                'total_games' => $query->func()->count('DISTINCT Games.id'),
+                'total_users' => $query->func()->count('DISTINCT Users.id'),
+            ])
+            ->leftJoinWith('Games.Users')
+            ->group('Tournaments.id')
+            // only return rows if there is a matching slug
+            ->where(['slug' => $slug]);
+    }
 }

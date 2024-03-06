@@ -14,6 +14,7 @@ declare(strict_types=1);
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
@@ -47,6 +48,10 @@ class AppController extends Controller
          * Enable the following component for recommended CakePHP form protection settings.
          * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
          */
-        //$this->loadComponent('FormProtection');
+    }
+
+    public function beforeRender(\Cake\Event\EventInterface $event)
+    {
+        $this->set('currentUser', $this->getRequest()->getAttribute('identity'));
     }
 }

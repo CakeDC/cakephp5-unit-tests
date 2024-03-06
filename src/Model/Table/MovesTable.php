@@ -44,6 +44,7 @@ class MovesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('ComputerMove');
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
@@ -62,22 +63,17 @@ class MovesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('user_id')
-            ->allowEmptyString('user_id');
+            ->integer('id')
+            ->allowEmptyString('id', 'create');
+
+        $validMoves = Configure::read('Moves.PlayerMoves');
+        $validator
+            ->allowEmptyString('player_move')
+            ->inList('player_move', $validMoves);
 
         $validator
-            ->integer('game_id')
-            ->allowEmptyString('game_id');
-
-        $validator
-            ->scalar('player_move')
-            ->maxLength('player_move', 1)
-            ->allowEmptyString('player_move');
-
-        $validator
-            ->scalar('computer_move')
-            ->maxLength('computer_move', 1)
-            ->allowEmptyString('computer_move');
+            ->allowEmptyString('computer_move')
+            ->inList('computer_move', $validMoves);
 
         $validator
             ->boolean('is_player_winner')
@@ -99,5 +95,21 @@ class MovesTable extends Table
         $rules->add($rules->existsIn(['game_id'], 'Games'), ['errorField' => 'game_id']);
 
         return $rules;
+    }
+
+    public function playerMove($userId, $gameId, $playerMove)
+    {
+        $game = $this->Games->get($gameId);
+        if ($game['is_player_winner'] !== null) {
+            return null;
+        }
+
+        $move = $this->newEntity([
+            'game_id' => $game['id'],
+            'player_move' => $playerMove,
+        ]);
+        $move['user_id'] = $userId;
+
+        return $this->save($move);
     }
 }

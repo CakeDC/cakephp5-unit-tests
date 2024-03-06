@@ -10,6 +10,8 @@ namespace App\Controller;
  */
 class UsersController extends AppController
 {
+
+    // register, login, logout
     /**
      * Index method
      *

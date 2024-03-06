@@ -38,4 +38,10 @@ class Tournament extends Entity
         'games' => true,
         'tournament_memberships' => true,
     ];
+
+    protected function _setName($name)
+    {
+        $this['slug'] = Text::slug(strtolower($name));
+        return $name;
+    }
 }

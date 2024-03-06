@@ -42,4 +42,13 @@ class Move extends Entity
         'user' => true,
         'game' => true,
     ];
+
+    protected function _getWinner()
+    {
+        if ($this['is_player_winner'] === null) {
+            return __('Tie');
+        }
+
+        return $this['is_player_winner'] ? __('Player') : __('Computer');
+    }
 }
