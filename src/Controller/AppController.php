@@ -29,7 +29,7 @@ use Cake\Controller\Controller;
  */
 class AppController extends Controller
 {
-    protected int $userId;
+    protected ?int $userId;
 
     /**
      * Initialization hook method.
@@ -47,7 +47,7 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('FormProtection');
         $this->loadComponent('Authentication.Authentication');
-        $this->userId = $this->Authentication->getIdentityData('id');
+        $this->userId = $this->getRequest()->getAttribute('identity')?->id;
     }
 
     public function beforeRender(\Cake\Event\EventInterface $event)
