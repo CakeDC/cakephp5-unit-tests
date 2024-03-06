@@ -42,7 +42,7 @@ class FormatterTest extends TestCase
      * @param $lost
      * @param $expected
      */
-    public function testFormatStatPercentageViaProvider($won, $lost, $expected) : void
+    public function testFormatStatPercentageViaProvider($won, $lost, $expected): void
     {
         $result = $this->formatter->formatStatPercentage($won, $lost);
         $this->assertSame($expected, $result);
@@ -53,7 +53,7 @@ class FormatterTest extends TestCase
      *
      * @return array
      */
-    public static function formatStatPercentageViaProvider() : array
+    public static function formatStatPercentageViaProvider(): array
     {
         return [
             [0,0,'Play more games!'],
