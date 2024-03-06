@@ -19,7 +19,7 @@ class Formatter
             throw new \OutOfBoundsException('Won and lost must not be < 0');
         }
         $percentage = Math::roundedPercentage($won, $lost);
-        if ($percentage === 0) {
+        if ($percentage == 0) {
             return __('Play more games!');
         }
 
