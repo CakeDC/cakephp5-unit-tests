@@ -11,6 +11,7 @@ namespace App\Controller;
 class UsersController extends AppController
 {
     // register, login, logout
+
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
@@ -45,6 +46,7 @@ class UsersController extends AppController
         // regardless of POST or GET, redirect if user is logged in
         if ($result && $result->isValid()) {
             $this->Authentication->logout();
+
             return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
     }
