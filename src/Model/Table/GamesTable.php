@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace App\Model\Table;
 
 use App\Model\Entity\Game;
+use App\Model\Entity\Move;
+use Cake\Cache\Cache;
 use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -115,9 +117,10 @@ class GamesTable extends Table
 
     public function checkFinished($gameId)
     {
-        $game = $this->get($gameId, [
-            'contain' => ['Moves'],
-        ]);
+        $game = $this->get(
+            $gameId,
+            contain: ['Moves'],
+        );
         if ($game['is_player_winner'] !== null) {
             return null;
         }
@@ -164,13 +167,13 @@ class GamesTable extends Table
         return [$wins['player'] ?? 0, $wins['computer'] ?? 0];
     }
 
-    public function findWon(Query $query, array $options): Query
+    public function findWon(SelectQuery $query, array $options): SelectQuery
     {
         return $query
             ->where(['is_player_winner' => true]);
     }
 
-    public function findLost(Query $query, array $options): Query
+    public function findLost(SelectQuery $query, array $options): SelectQuery
     {
         return $query
             ->where(['is_player_winner' => false]);
@@ -183,7 +186,7 @@ class GamesTable extends Table
         }
     }
 
-    public function findPlayed(Query $query, array $options): Query
+    public function findPlayed(SelectQuery $query, array $options): SelectQuery
     {
         return $query
             ->where(['is_player_winner IS NOT null']);

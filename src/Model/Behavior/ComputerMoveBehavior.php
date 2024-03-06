@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Model\Behavior;
 
 use App\Model\Entity\Move;
+use Cake\Core\Configure;
 use Cake\Event\EventInterface;
 use Cake\ORM\Behavior;
 

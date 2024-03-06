@@ -16,7 +16,7 @@ class StatsCell extends Cell
      *
      * @var array
      */
-    protected $_validCellOptions = [];
+    protected array $_validCellOptions = [];
 
     /**
      * Default display method.
@@ -26,14 +26,14 @@ class StatsCell extends Cell
      */
     public function display($user)
     {
-        $this->loadModel('Games');
+        $Games = $this->fetchTable('Games');
         $won = 0;
         $lost = 0;
         if ($user) {
-            $won = $this->Games->find('owner', ['userId' => $user['id']])
+            $won = $Games->find('owner', userId: $user['id'])
                 ->find('won')
                 ->count();
-            $lost = $this->Games->find('owner', ['userId' => $user['id']])
+            $lost = $Games->find('owner', userId: $user['id'])
                 ->find('lost')
                 ->count();
         }

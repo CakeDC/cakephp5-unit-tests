@@ -1,5 +1,5 @@
 <?php
-echo $this->Html->tag('h3', __('Game started {0}', $this->Time->timeAgoInWords($currentGame['created'])));
+echo $this->Html->tag('h3', __('Game started {0}', $this->Time->timeAgoInWords($currentGame['created'] ?? new \Cake\I18n\DateTime())));
 $playerMoveUrl = [
     'controller' => 'Moves',
     'action' => 'playerMove',

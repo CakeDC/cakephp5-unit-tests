@@ -17,7 +17,7 @@ class TournamentsController extends AppController
      */
     public function index()
     {
-        $tournaments = $this->Tournaments->find('index', ['userId' => $this->Auth->user('id')]);
+        $tournaments = $this->Tournaments->find('index', userId: $this->userId);
         $this->set(compact('tournaments'));
     }
 
@@ -104,7 +104,7 @@ class TournamentsController extends AppController
         }
         $tournament = $this->Tournaments->get($tournamentId);
         $tournament = $this->Tournaments->patchEntity($tournament, $this->request->getData());
-        $tournament['tournament_memberships'][0]['user_id'] = $this->Auth->user('id');
+        $tournament['tournament_memberships'][0]['user_id'] = $this->userId;
         $this->Tournaments->save($tournament);
         $this->set(compact('tournament'));
         $this->render('/Element/Tournaments/join');

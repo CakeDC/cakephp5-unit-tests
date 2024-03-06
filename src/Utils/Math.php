@@ -18,7 +18,7 @@ class Math
      * @return int rounded percentage
      * @throws \OutOfBoundsException
      */
-    public static function roundedPercentage(int $successful, int $failed): int
+    public static function roundedPercentage(int $successful, int $failed): float
     {
         if ($successful < 0 || $failed < 0) {
             throw new \OutOfBoundsException('Won and lost must not be < 0');
