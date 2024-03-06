@@ -20,15 +20,15 @@ class UsersFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'email' => 'Lorem ipsum dolor sit amet',
-                'password' => 'Lorem ipsum dolor sit amet',
-                'is_active' => 1,
-                'first_name' => 'Lorem ipsum dolor sit amet',
-                'last_name' => 'Lorem ipsum dolor sit amet',
-                'is_superuser' => 1,
-                'created' => '2024-03-05 15:52:24',
-                'modified' => '2024-03-05 15:52:24',
-                'games_count' => 1,
+                'email' => 'a@example.com',
+                'password' => '$2y$10$bAklMaju0L01CA7IZZAbbO5k/olpIkmiXztk2Gmn0dEp31YTntQg6',
+                'is_active' => true,
+                'first_name' => 'a',
+                'last_name' => 'a',
+                'is_superuser' => false,
+                'created' => '2024-03-06 12:13:05',
+                'modified' => '2024-03-06 12:13:05',
+                'games_count' => 0,
             ],
         ];
         parent::init();

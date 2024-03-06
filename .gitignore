@@ -53,3 +53,4 @@ yarn-debug.log
 yarn-error.log
 .ddev
 config/Migrations/schema-dump-default.lock
+database.sqlite
