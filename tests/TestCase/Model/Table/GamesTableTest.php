@@ -4,8 +4,11 @@ declare(strict_types=1);
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Entity\Game;
+use App\Model\Entity\User;
 use App\Model\Table\GamesTable;
+use Cake\ORM\Query\SelectQuery;
 use Cake\TestSuite\TestCase;
+use Cake\Utility\Text;
 
 /**
  * App\Model\Table\GamesTable Test Case
@@ -72,5 +75,22 @@ class GamesTableTest extends TestCase
     {
         $game = $this->GamesTable->current(2);
         $this->assertNull($game);
+    }
+
+    public function testFindOwnerShouldReturnQuery(): void
+    {
+        $generatedUser = $this->GamesTable->Users->save(new User([
+            'email' => Text::uuid() . '@example.com',
+            'password' => 'password',
+            'games' => [
+                new Game([
+                    'best_of' => 3,
+                ]),
+            ],
+        ]));
+
+        $query = $this->GamesTable->find('owner', userId: $generatedUser->id);
+        $this->assertInstanceOf(SelectQuery::class, $query);
+        $this->assertSame(1, $query->count());
     }
 }
