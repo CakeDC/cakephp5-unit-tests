@@ -33,3 +33,8 @@ if (Configure::check('Log.debug')) {
 if (Configure::check('Log.error')) {
     Configure::write('Log.error.file', 'cli-error');
 }
+
+function t(string $alias): \Cake\ORM\Table
+{
+    return \Cake\ORM\TableRegistry::getTableLocator()->get($alias);
+}

@@ -34,8 +34,6 @@ require CORE_PATH . 'config' . DS . 'bootstrap.php';
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Core\Configure\Engine\PhpConfig;
-use Cake\Database\Type\StringType;
-use Cake\Database\TypeFactory;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\ErrorTrap;
 use Cake\Error\ExceptionTrap;
@@ -224,8 +222,4 @@ ServerRequest::addDetector('tablet', function ($request) {
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 
-// set a custom date and time format
-// see https://book.cakephp.org/4/en/core-libraries/time.html#setting-the-default-locale-and-format-string
-// and https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax
-//\Cake\I18n\FrozenDate::setToStringFormat('dd.MM.yyyy');
-//\Cake\I18n\FrozenTime::setToStringFormat('dd.MM.yyyy HH:mm');
+Configure::load('game');
